@@ -112,3 +112,5 @@ class PredictView(views.APIView):
         prediction["request_id"] = ml_request.id
 
         return Response(prediction)
+class page(TemplateView):
+    template_name = 'main.html'

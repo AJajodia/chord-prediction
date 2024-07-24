@@ -1,9 +1,23 @@
 <!DOCTYPE html>
+
 <style>
-    
-    select {font-family: sans-serif; font-size: 50px; font: calibri;}
-    input {font-family: sans-serif; font-size: 50px; font: calibri}
-    p {font-family: sans-serif; font-size: 50px;}
+    select {
+        font-family: sans-serif;
+        font-size: 50px;
+        font: calibri;
+    }
+
+    input {
+        font-family: sans-serif;
+        font-size: 50px;
+        font: calibri
+    }
+
+    p {
+        font-family: sans-serif;
+        font-size: 50px;
+    }
+
     .center-screen {
         display: flex;
         flex-direction: column;
@@ -12,53 +26,57 @@
         text-align: center;
         min-height: 100vh;
     }
-</style>
 
+    h1 {
+        font-family: sans-serif;
+    }
+</style>
+<h1>
+    Chord Predictor -- Anu Jajodia
+</h1>
 <div class="center-screen">
-<p>  
-<form action="/predict" method="POST">
-    <select id="chord-select" name="first">
-        <option value="I">I</option>
-        <option value="IV">IV</option>
-        <option value="V">V</option>
-        <option value="ii">ii</option>
-        <option value="iii">iii</option>
-        <option value="vi">vi</option>
-    </select>
-    <select id="chord-select" name="second">
-        <option value="I">I</option>
-        <option value="II">II</option>
-        <option value="III">III</option>
-        <option value="IV">IV</option>
-        <option value="V">V</option>
-        <option value="bIII">bVII</option>
-        <option value="ii">ii</option>
-        <option value="iii">iii</option>
-        <option value="vi">vi</option>
-    </select>
-    <select id="chord-select" name="third">
-        <option value="I">I</option>
-        <option value="II">II</option>
-        <option value="III">III</option>
-        <option value="IV">IV</option>
-        <option value="V">V</option>
-        <option value="bVII">bVII</option>
-        <option value="ii">ii</option>
-        <option value="iii">iii</option>
-        <option value="vi">vi</option>
-        <option value="#IVdim">#IVdim</option>
-    </select>
-    <input type="submit" value="Submit">
-</form>
-</p>  
-{% if prediction %}
-        <p>Prediction: {{ prediction[0] }}     {{ prediction[1] }}     {{ prediction[2] }}     {{ prediction[3] }}</p>
+    <p>
+    <form action="/predict" method="POST">
+        <select id="chord-select" name="first">
+            <option value="I">I</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+            <option value="ii">ii</option>
+            <option value="iii">iii</option>
+            <option value="vi">vi</option>
+        </select>
+        <select id="chord-select" name="second">
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+            <option value="bIII">bVII</option>
+            <option value="ii">ii</option>
+            <option value="iii">iii</option>
+            <option value="vi">vi</option>
+        </select>
+        <select id="chord-select" name="third">
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+            <option value="bVII">bVII</option>
+            <option value="ii">ii</option>
+            <option value="iii">iii</option>
+            <option value="vi">vi</option>
+            <option value="#IVdim">#IVdim</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    </p>
+    {% if prediction %}
+    <p>Prediction: {{ prediction[0] }} {{ prediction[1] }} {{ prediction[2] }} {{ prediction[3] }}</p>
     {% endif %}
     {% if filename %}
-        <figure>
-            <audio
-                autoplay
-                src="{{ filename }}"">
+    <figure>
+        <audio autoplay src="{{ filename }}"">
                     Your browser does not support the
                     <code>audio</code> element.
             </audio>

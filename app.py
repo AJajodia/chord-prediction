@@ -4,8 +4,13 @@ from pandas import DataFrame
 from pydub import AudioSegment
 import logging
 import sys
+import os
+
+# absolute path to this file
+FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
+print(FILE_DIR)
 
 model = joblib.load("random_forest.joblib")
 encoder = joblib.load("encoder.joblib")
@@ -48,7 +53,7 @@ def predict():
         progression = progression + AudioSegment.from_mp3("static/audio/" + chord + ".mp3")
     
    
-    progression.speedup().export(filename, format="mp3")
+    progression.speedup().export(os.path.join(FILE_DIR, filename), format="mp3")
 
     return render_template('index.html', prediction=prediction, filename=filename)
 

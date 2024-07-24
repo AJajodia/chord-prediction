@@ -2,12 +2,18 @@ from flask import Flask, request, render_template
 import joblib
 from pandas import DataFrame
 from pydub import AudioSegment
+import logging
+import sys
+
 
 
 model = joblib.load("random_forest.joblib")
 encoder = joblib.load("encoder.joblib")
 
 app = Flask(__name__)
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 @app.route('/')
 def home():
@@ -47,4 +53,4 @@ def predict():
     return render_template('index.html', prediction=prediction, filename=filename)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
